@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "sms"
+  "defaultProject": "sms",
+  "cli": {
+    "analytics": "147fbccb-799d-46e5-9094-7d558396ddaf"
+  }
 }
