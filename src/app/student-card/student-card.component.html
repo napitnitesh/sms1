@@ -1,0 +1,21 @@
+<div class="card">
+    <div>
+      <ng-container *ngIf="!showForm">
+      <p>Name : {{student.name}}</p>
+      <p>Age : {{student.age}}</p>
+      <button (click)="delete()">delete</button>
+      <button (click)="onUpdate()">update</button>
+      </ng-container>
+      <ng-container *ngIf="showForm">
+        <h2>Update Student Form</h2>
+        <br>
+        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="updateForm.name">
+        <p>Entered Name : {{student.name}}</p>
+        <input class="form-control" type="text" name="age" placeholder="Age" [(ngModel)]="updateForm.age">
+        <p>Entered Age : {{student.age}}</p>
+        <br>
+        <button class="btn btn-primary" (click)="update()">Update</button>
+        <button class="btn btn-danger" (click)="showForm=false">Cancel</button>
+      </ng-container>
+    </div>
+   </div>

@@ -1,5 +1,6 @@
 import { templateJitUrl } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { StudentService } from './services/student.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,17 @@ export class AppComponent {
   title = 'sms';
 
   students:{name:string,age:string}[]= [];
-  student:{name:string,age:string}={name:'',age:''}
   updateForm:{name:string,age:string}={name:'',age:''}
   selectedStudentIndex
 
-  addStudent(){
+  constructor(public studentService:StudentService){
+    this.students = this.studentService.students
+  }
+
+  addStudent(student){
+    console.log(student)
     // let temp = {name:this.student.name,age:this.student.age}
-    this.students.push({...this.student})
-    this.student = {name:'',age:''}
+    this.students.push({...student})
     console.log(this.students)
   }
 
@@ -31,11 +35,11 @@ export class AppComponent {
     this.updateForm = {...this.students[i]}
   }
 
-  update()
+  update(event)
   {
-    this.students[this.selectedStudentIndex] = {...this.updateForm}
+    console.log(event)
+    this.students[event.index] = {...event.newData}
     this.selectedStudentIndex = null
-
   }
 }
 

@@ -1,41 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-     <div>
-      <h2>Add Student Form</h2>
-      <br>
-      <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="student.name">
-      <p>Entered Name : {{student.name}}</p>
-      <input class="form-control" type="text" name="age" placeholder="Age" [(ngModel)]="student.age">
-      <p>Entered Age : {{student.age}}</p>
-      <br>
-      <button class="btn btn-primary btn-block" (click)="addStudent()">Add</button>
-     </div>
+     <app-add-student></app-add-student>
     </div> 
     <div class="col-6">
       <h2>List of Members</h2>
       <br>
-      <div class="card" *ngFor="let item of students; let i = index">
-        <div>
-          <ng-container *ngIf="selectedStudentIndex!=i">
-          <p>{{i}}</p>
-          <p>Name : {{item.name}}</p>
-          <p>Age : {{item.age}}</p>
-          <button (click)="delete(i)">delete</button>
-          <button (click)="onUpdate(i)">update</button>
-          </ng-container>
-          <ng-container *ngIf="selectedStudentIndex!=null && selectedStudentIndex==i">
-            <h2>Update Student Form</h2>
-            <br>
-            <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="updateForm.name">
-            <p>Entered Name : {{student.name}}</p>
-            <input class="form-control" type="text" name="age" placeholder="Age" [(ngModel)]="updateForm.age">
-            <p>Entered Age : {{student.age}}</p>
-            <br>
-            <button class="btn btn-primary btn-block" (click)="update()">Update</button>
-          </ng-container>
-        </div>
-      </div>
+      <ng-container  *ngFor="let item of studentService.students; let i = index">
+       <app-student-card  [student]="item" [index]="i"></app-student-card>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -1,0 +1,10 @@
+<div>
+    <h2>Add Student Form</h2>
+    <br>
+    <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="student.name">
+    <p>Entered Name : {{student.name}}</p>
+    <input class="form-control" type="text" name="age" placeholder="Age" [(ngModel)]="student.age">
+    <p>Entered Age : {{student.age}}</p>
+    <br>
+    <button class="btn btn-primary btn-block" (click)="addStudent()">Add</button>
+</div>
